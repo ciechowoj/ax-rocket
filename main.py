@@ -116,7 +116,7 @@ TIME_STEP = 0.01
 oldTime = pygame.time.get_ticks() * 0.001
 newTime = pygame.time.get_ticks() * 0.001
 deltaTime = 0
-screen = pygame.display.set_mode( (1024, 768), pygame.FULLSCREEN )
+screen = pygame.display.set_mode( (1024, 768) )
 quit = False
 
 while not quit:
@@ -126,7 +126,7 @@ while not quit:
     oldTime = newTime
     # handle events
     for event in pygame.event.get():
-        if event.type == pygame.QUIT: 
+        if event.type == pygame.QUIT:
             quit = True
         elif event.type == KEYDOWN:
             if event.key == K_a:
@@ -209,7 +209,7 @@ while not quit:
 
         # use fuel
         fuel = max(0.0, fuel - spacecraft.engine_force * FUEL_USAGE * TIME_STEP)
-            
+
         spacecraft.external_force = getGravity(spacecraft, planets)
         spacecraft.on_update(TIME_STEP, newTime)
         if random() * TIME_STEP < ASTEROID_THRESHOLD:
